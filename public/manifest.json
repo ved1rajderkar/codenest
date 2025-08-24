@@ -1,0 +1,16 @@
+{
+  "short_name": "CodeNest",
+  "name": "CodeNest - Online Compiler",
+  "icons": [
+    {
+      "src": "codenest-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

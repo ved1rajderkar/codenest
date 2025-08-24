@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#1a1a1a">
+    <path d="M35 20C45 15 45 45 35 40C25 35 25 25 35 20Z"/>
+    <text x="50" y="45" font-family="Arial" font-size="24" font-weight="bold">CodeNest</text>
+    <text x="50" y="65" font-family="Arial" font-size="12">ONLINE COMPILER</text>
+  </g>
+</svg>

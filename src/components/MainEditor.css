@@ -1,0 +1,527 @@
+.main-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  height: calc(100vh - 60px);
+  transition: all 0.3s ease;
+}
+
+.main-editor.sidebar-collapsed {
+  margin-left: 0;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #333;
+  padding: 0 16px;
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .editor-header {
+    padding: 0 8px;
+    gap: 8px;
+  }
+}
+
+.file-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-tab {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 12px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #a3a3a3;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-tab.active {
+  background-color: #4ade8020;
+  color: #4ade80;
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #a3a3a3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #333;
+  color: white;
+}
+
+.prompt-section {
+  padding: 16px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+@media (max-width: 768px) {
+  .prompt-section {
+    padding: 8px;
+  }
+  
+  .main-editor {
+    height: calc(100vh - 48px);
+  }
+  
+  .editor-container {
+    min-height: 200px;
+  }
+}
+
+.prompt-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .prompt-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .prompt-input {
+    width: 100%;
+  }
+
+  .generate-btn {
+    width: 100%;
+  }
+
+  .action-btn {
+    padding: 0 8px;
+  }
+
+  .file-tab {
+    padding: 0 8px;
+  }
+}
+
+.prompt-icon {
+  color: #4ade80;
+  flex-shrink: 0;
+}
+
+.prompt-input {
+  flex: 1;
+  height: 44px;
+  background-color: #2a2a2a;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  padding: 0 16px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.prompt-input:focus {
+  border-color: #4ade80;
+  background-color: #333;
+}
+
+.prompt-input::placeholder {
+  color: #666;
+}
+
+.prompt-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.generate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: #4ade80;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.generate-btn:hover:not(:disabled) {
+  background-color: #22c55e;
+}
+
+.generate-btn:disabled {
+  background-color: #333;
+  cursor: not-allowed;
+}
+
+.generate-btn.generating {
+  background-color: #4ade80;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.editor-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Custom scrollbar for Monaco Editor */
+.monaco-editor .scrollbar.horizontal,
+.monaco-editor .scrollbar.vertical {
+  background-color: #2a2a2a;
+}
+
+.monaco-editor .slider {
+  background-color: #4ade8040;
+}
+
+.monaco-editor .slider:hover {
+  background-color: #4ade8060;
+}
+
+/* I/O Container Styles */
+.io-container {
+  display: flex;
+  height: 200px;
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+}
+
+.stdin-container,
+.output-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #333;
+}
+
+.output-container {
+  border-right: none;
+}
+
+.stdin-header,
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 12px;
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #333;
+}
+
+.stdin-header h4,
+.output-header h4 {
+  margin: 0;
+  font-size: 12px;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.output-header button {
+  background: none;
+  border: none;
+  color: #4ade80;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.output-header button:hover {
+  background-color: #4ade8020;
+}
+
+.stdin-content,
+.output-content {
+  flex: 1;
+  background-color: #1a1a1a;
+  border: none;
+  padding: 8px;
+  color: #e5e5e5;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  resize: none;
+  outline: none;
+}
+
+.stdin-content {
+  border-right: 1px solid #333;
+}
+
+.stdin-content::placeholder,
+.output-content::placeholder {
+  color: #666;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .main-editor {
+    height: calc(100vh - 60px);
+  }
+
+  .editor-header {
+    padding: 0 12px;
+    height: 36px;
+  }
+
+  .file-tab {
+    height: 28px;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .action-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .prompt-section {
+    padding: 12px;
+  }
+
+  .prompt-container {
+    gap: 8px;
+  }
+
+  .prompt-input {
+    height: 40px;
+    font-size: 14px;
+    padding: 0 12px;
+  }
+
+  .generate-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .editor-container {
+    margin-bottom: 0;
+  }
+
+  .io-container {
+    flex-direction: column;
+    height: 300px;
+  }
+
+  .stdin-container,
+  .output-container {
+    flex: 1;
+    border-right: none;
+    border-bottom: 1px solid #333;
+  }
+
+  .output-container {
+    border-bottom: none;
+  }
+
+  .stdin-content,
+  .output-content {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editor-header {
+    padding: 0 8px;
+  }
+
+  .file-tabs {
+    gap: 4px;
+  }
+
+  .editor-actions {
+    gap: 4px;
+  }
+
+  .action-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .action-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .prompt-section {
+    padding: 8px;
+  }
+
+  .prompt-input {
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .generate-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .generate-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .io-container {
+    height: 250px;
+  }
+
+  .stdin-header h4,
+  .output-header h4 {
+    font-size: 11px;
+  }
+
+  .stdin-content,
+  .output-content {
+    font-size: 11px;
+    padding: 6px;
+  }
+}
+
+.io-container {
+  display: flex;
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+  min-height: 200px;
+  max-height: 50vh;
+  resize: vertical;
+  overflow: auto;
+}
+
+.stdin-container, .output-container {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.stdin-container {
+  border-right: 1px solid #333;
+  resize: horizontal;
+  overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .io-container {
+    flex-direction: column;
+    height: auto;
+    max-height: none;
+  }
+
+  .stdin-container {
+    border-right: none;
+    border-bottom: 1px solid #333;
+    resize: vertical;
+  }
+
+  .stdin-container, .output-container {
+    min-height: 120px;
+    max-height: 200px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .stdin-content, .output-content {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .stdin-header, .output-header {
+    margin-bottom: 6px;
+  }
+
+  .output-header button {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
+.stdin-header, .output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stdin-header h4, .output-header h4 {
+  margin: 0;
+  color: white;
+}
+
+.output-header button {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stdin-content, .output-content {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 10px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  height: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.stdin-content::placeholder, .output-content::placeholder {
+    color: #666;
+}
