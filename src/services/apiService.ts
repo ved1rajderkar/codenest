@@ -1,4 +1,4 @@
-const API_KEY = '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';
+const API_KEY = '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';
 const BASE_URL = 'https://openrouter.ai/api/v1';
 
 interface GenerateCodeRequest {
@@ -116,5 +116,6 @@ ${request.context ? `Context/Existing Code: ${request.context}` : ''}`;
     }
   }
 }
+
 
 export default APIService;
